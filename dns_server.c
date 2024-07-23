@@ -4,11 +4,11 @@ void handle_dns_request(int sockfd, struct sockaddr_in* client_addr, socklen_t c
     dns_header_t* header = (dns_header_t*)buffer;
 
     // Установить флаг QR (1 бит) в заголовке DNS
-    header->flags |= htons(0x8000);
+    header->flags |= htons(DNS_FLAG_QR);
 
     // Если установлен флаг RD (1 бит), установить флаг RA (1 бит)
-    if (header->flags & htons(0x0100)) {
-        header->flags |= htons(0x0080); // Установить флаг RA
+    if (header->flags & htons(DNS_FLAG_RD)) {
+        header->flags |= htons(DNS_FLAG_RA); // Установить флаг RA
     }
 
     // Создать DNS ответ
