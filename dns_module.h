@@ -30,6 +30,11 @@
 #define DNS_CLASS_CH 3
 #define DNS_CLASS_HS 4
 
+// DNS Flags
+#define DNS_FLAG_QR 0x8000 // Query/Response flag
+#define DNS_FLAG_RD 0x0100 // Recursion Desired flag
+#define DNS_FLAG_RA 0x0080 // Recursion Available flag
+
 typedef struct {
     uint16_t id;
     uint16_t flags;
