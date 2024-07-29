@@ -1,9 +1,9 @@
 #include "dns_stress_test.h"
 
 int main(int argc, char* argv[]) {
-    if (argc < 6) {
+    if (argc != 6) {
         fprintf(stderr, "Usage: %s <server_ip> <port> <qps> <duration> <threads>\n", argv[0]);
-        exit(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
 
     const char* server_ip = argv[1];
@@ -14,5 +14,5 @@ int main(int argc, char* argv[]) {
 
     start_stress_test(server_ip, port, qps, duration, threads);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
