@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -pedantic -std=c11
 LDFLAGS = -pthread
 
 # Объектные файлы
-OBJS = dns_module.o dns_server.o main_server.o dns_stress_test.o main_stress_test.o
+OBJS = dns_module.o dns_server.o main_server.o dns_stress_test.o main.o
 
 all: dns_server dns_stress_test
 
@@ -12,7 +12,7 @@ dns_server: dns_module.o dns_server.o main_server.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 # Правило для создания dns_stress_test
-dns_stress_test: dns_module.o dns_stress_test.o main_stress_test.o
+dns_stress_test: dns_module.o dns_stress_test.o main.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 # Общие правила компиляции
